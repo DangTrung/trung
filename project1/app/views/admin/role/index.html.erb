@@ -1,0 +1,52 @@
+
+<div class="container mt-3">
+  <div class="row">
+   <div class="col-12">
+        <table class="table table-hover table-bordered">
+        <h2>Role List</h2>
+        <thead class="">
+          <tr class="text-center">
+            <th scope="col" class="">#</th>
+            <th scope="col" class="">Role Name</th>
+            <th scope="col" class="">Role Action</th>
+            <th scope="col" class="">Action</th>
+
+          </tr>
+        </thead>
+        <tbody>
+           <% @role.each do |i| %>
+          <tr class="text-center">
+            <th scope="row"><%= i.id %></th>
+            <td><%= i.role_name%></td>
+            <td> 
+               <div class="d-flex justify-content-around">
+                <%@name = i.permissions.pluck(:subject_class).uniq %>
+                <%@name.each do |f|%>
+                <div class="border ">
+                 <p class="border font-weight-bold"> <%=f%></p>
+                 <%i.permissions.where(subject_class: f).each do |n|%> 
+                 <p><%= n.action%></p>
+                 <%end%>
+        
+                 </div>
+                <%end%>
+                </div>
+            </td>
+            <td >
+            <div class="d-flex  justify-content-around">
+              <%if can? :update, Role%>
+                <%= link_to "Edit", admin_role_edit_path(i.id), method: :get, class: "btn btn-md btn-primary mx-2 rounded" %>
+              <%end%>
+              <%if can? :destroy, Role%>
+               <%= button_to "Delete",admin_role_destroy_path(i.id), method: :delete, class: "btn btn-md btn-danger mx-2 rounded",
+                                  data: { confirm: "You sure?" } %> 
+              <%end%>
+              </div>
+            </td>
+          </tr>
+          <% end%>
+        </tbody>
+        </table>
+    </div>
+    </div>
+    </div>

@@ -1,0 +1,31 @@
+
+<% provide(:title, "Edit user") %>
+<div class="container d-flex justify-content-center">
+<div class="row shadow-lg rounded p-5">
+ <div class="col-md-12 col-md-offset-3"> 
+    <%= form_for [:admin, @user], url: {action: :update, controller: :user} do |f| %>
+      <h1>Update your profile</h1>
+      <%= render 'shared/error_messages'%>
+      <%if can? :manage, Role%>
+      <%= f.label :role_id %>
+      <%= f.select :role_id, options_for_select(@role.map{|c| [c.role_name, c.id]}),{}, class: 'form-control'%>
+      <%end%>
+      <%= f.label :avatar%>
+      <%= f.file_field :avatar,  accept: "image/jpeg, image/gif, image/png, image/jpg",  class: 'form-control-file'%>
+      
+      <%= f.label :name %>
+      <%= f.text_field :name, class: 'form-control' %>
+      <%= f.label :email %>
+      <%= f.email_field :email, class: 'form-control' %>
+
+      <%= f.label :password %>
+      <%= f.password_field :password, class: 'form-control' %>
+
+      <%= f.label :password_confirmation, "Confirmation" %>
+      <%= f.password_field :password_confirmation, class: 'form-control' %>
+
+      <%= f.submit "Save changes", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
+</div>

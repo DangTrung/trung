@@ -1,0 +1,42 @@
+<div class="container mt-3">
+  <div class="row">
+    <div class="col-12">
+      <table class="table table-hover table-bordered">
+        <thead class="">
+          <tr class="text-center">
+            <th scope="col" class="">#</th>
+            <th scope="col" class="">Tittle</th>
+            <th scope="col" class="">Gmail</th>
+            <th scope="col" class="">Role name</th>
+            <th scope="col" class="">Created_at</th>
+            <th scope="col" class="">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+         <%@user.each do |i|%>
+          <tr class="text-center">
+            <th scope="row"><%= i.id %></th>
+            <td><%= i.name%></td>
+            <td><%= i.email%></td>
+            <td><% Role.where(id: i.role_id).each do |e|%>
+              <%= e.role_name%>
+              <%end%>
+            </td>
+            <td><%= i.created_at.strftime("%d-%m-%Y")%></td>
+            <td>
+            <div class="d-flex justify-content-around">
+            <%if can? :update, User%>
+               <%=  link_to "Edit", admin_user_edit_path(i.id), class: "btn-sm btn-primary mx-2 rounded"%>
+            <%end%>
+            <%if can? :destroy, User%>
+               <%= button_to "Detete", admin_user_destroy_path(i.id), class: "btn-sm btn-danger mx-2 rounded", method: "delete"%>
+            <%end%>
+            </div>
+            </td>
+          </tr>
+          <%end%>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

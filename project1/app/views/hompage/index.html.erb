@@ -1,0 +1,229 @@
+<section class="section first-section">
+            <div class="container-fluid">
+                <div class="masonry-blog clearfix">
+                <%@news.each do |i|%>
+                    <div class="left-side">
+                        <div class="masonry-box post-media">
+                            <%if i.image_url.url%>
+                             <%=image_tag i.image_url.url, class: "img-fluid"%>
+                             <%end%>
+                             <div class="shadoweffect">
+                                <div class="shadow-desc">
+                                    <div class="blog-meta">
+                                        <%i.categories.each do |i|%>
+                                        <span class="bg-aqua"><a href="<%=showcate_path(i.slug)%>" title=""><%=i.name%></a></span>
+                                        <%end%>
+                                        <h4><a href="<%=show_path(i.slug)%>" title=""><%=i.title%></a></h4>
+                                        <small><a href="<%=show_path(i.slug)%>" title=""><%=i.created_at%></a></small>
+                                        <small><a href="" title=""></a></small>
+                                    </div><!-- end meta -->
+                                </div><!-- end shadow-desc -->
+                            </div><!-- end shadow -->
+                        </div><!-- end post-media -->
+                    </div>
+                    
+                <%end%>
+                    
+                </div><!-- end masonry -->
+            </div>
+</section>
+
+        <section class="section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                        <div class="section-title">
+                            <h3 class="color-aqua"><a href="#" title="">Hot News</a></h3>
+                        </div><!-- end title -->
+
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <%@news1.each do |i|%>
+                                <div class="blog-box">
+                                    <div class="post-media">
+                                        <a href="<%=show_path(i.slug)%>" title="">
+                                         <%if i.image_url.url%>
+                                            <%=image_tag i.image_url.url, class: "img-fluid"%>
+                                            <%end%>
+                                            <div class="hovereffect">
+                                                <span></span>
+                                            </div><!-- end hover -->
+                                        </a>
+                                    </div><!-- end media -->
+                                    <div class="blog-meta big-meta">
+                                        <h4><a href="<%=show_path(i.slug)%>" title=""><%=i.title%></a></h4>
+                                        <p><%=i.short_description%></p>
+                                        <%i.categories.each do |f|%>
+                                        <small><a href="<%=showcate_path(f.slug)%>" title=""><%=f.slug%></a></small>
+                                        <%end%>
+                                        <small><a href="" title=""><%=i.created_at%></a></small>
+                                        <small><a href="blog-author.html" title="">by Trung</a></small>
+                                    </div><!-- end meta -->
+                                </div><!-- end blog-box -->
+
+                                <hr class="invis">
+                            <%end%>
+                            </div><!-- end col -->
+                        </div><!-- end row -->
+                    </div><!-- end col -->
+
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                        <div class="section-title">
+                            <h3 class="color-pink"><a href="#" title="">Last New</a></h3>
+                        </div><!-- end title -->
+                        <div class="row">
+                            
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                            <%@news2.each do |i|%>
+                                <div class="blog-box">
+                                    <div class="post-media">
+                                        <a href="<%=show_path(i.slug)%>" title="">
+                                             <%if i.image_url.url%>
+                                            <%= image_tag i.image_url.url, class: "img-fluid"%>
+                                             <%end%>
+                                            <div class="hovereffect">
+                                                <span></span>
+                                            </div><!-- end hover -->
+                                        </a>
+                                    </div><!-- end media -->
+                                    <div class="blog-meta">
+                                        <h4><a href="<%=show_path(i.slug)%>" title=""><%=i.title%></a></h4>
+                                        <%i.categories.each do |f|%>
+                                        <small><a href="<%=showcate_path(f.slug)%>" title=""><%=f.name%></a></small>
+                                        <%end%>
+                                        <small><a href="<%=show_path(i.slug)%>" title=""><%=i.created_at%></a></small>
+                                    </div><!-- end meta -->
+                                </div><!-- end blog-box -->
+
+                                <hr class="invis">
+                                <%end%>
+                            </div><!-- end col -->
+                            
+                            
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                <%@news3.each do |i|%>
+                                <div class="blog-box">
+                                    <div class="post-media">
+                                        <a href="<%=show_path(i.slug)%>" title="">
+                                         <%if i.image_url.url%>
+                                            <%=image_tag i.image_url.url%>
+                                        <%end%>
+                                            <div class="hovereffect">
+                                                <span></span>
+                                            </div><!-- end hover -->
+                                        </a>
+                                    </div><!-- end media -->
+                                    <div class="blog-meta">
+                                        <h4><a href="<%=show_path(i.slug)%>" title=""><%=i.title%></a></h4>
+                                        <%i.categories.each do |f|%>
+                                        <small><a href="<%=showcate_path(f.slug)%>" title=""><%=f.name%></a></small>
+                                        <%end%>
+                                        <small><a href="<%=show_path(i.slug)%>" title=""><%=i.created_at%></a></small>
+                                    </div><!-- end meta -->
+                                </div><!-- end blog-box -->
+
+                                <hr class="invis">
+                                <%end%>
+                            </div><!-- end col -->
+                            
+                        </div><!-- end row -->
+                    </div><!-- end col -->
+                </div><!-- end row -->
+
+                <hr class="invis1">
+
+                <div class="row">
+                    <div class="col-lg-10 offset-lg-1">
+                        <div class="banner-spot clearfix">
+                            <div class="banner-img">
+                                <%= image_tag "ads-1.jpg" ,class: "img-fluid"%>
+                            </div><!-- end banner-img -->
+                        </div><!-- end banner -->
+                    </div><!-- end col -->
+                </div><!-- end row -->
+
+                <hr class="invis1">
+
+                <div class="row">
+                 
+                    <div class="col-lg-9">
+                      <%@news.each do |i|%> 
+                        <div class="blog-list clearfix">
+                            <div class="section-title">
+                            <% i.categories.each do |f|%>
+                                <h3 class="color-green"><a href="<%=showcate_path(f.slug)%>" title=""><%=f.name%></a></h3>
+                             <%end%>
+                            </div>
+                           
+                            <div class="blog-box row">
+                                <div class="col-md-4">
+                                    <div class="post-media">
+                                        <a href="<%=show_path(i.slug)%>" title="">
+                                         <%if i.image_url.url%>
+                                            <%= image_tag (i.image_url.url if i.image_url?), class: "img-fluid"%>
+                                         <%end%>
+                                            <div class="hovereffect"></div>
+                                        </a>
+                                    </div><!-- end media -->
+                                </div><!-- end col -->
+
+                                <div class="blog-meta big-meta col-md-8">
+                                    <h4><a href="<%=show_path(i.slug)%>" title=""><%= i.title%></a></h4>
+                                    <p><%=i.short_description%></p>
+                                    <% i.categories.each do |f|%>
+                                    <small><a href="<%=show_path(f.slug)%>" title=""><%=f.name%></a></small>
+                                    <%end%>
+                                    <small><%=i.created_at%></small>
+                                </div><!-- end meta -->
+                            </div>
+
+                            <hr class="invis">
+                        </div>
+                         <%end%>
+                    </div><!-- end col -->
+            
+                
+                    <div class="col-lg-3">
+                        <%@news3.each do |i|%>
+                        <div class="section-title">
+                           <% i.categories.each do |f|%>
+                            <h3 class="color-yellow"><a href="<%=showcate_path(f.slug)%>" title=""><%=f.name%></a></h3>
+                            <%end%>
+                        </div><!-- end title -->
+                        <div class="blog-box">
+                            <div class="post-media">
+                                <a href="<%=show_path(i.slug)%>" title="">
+                                 <%if i.image_url.url%>
+                                   <%= image_tag i.image_url.url, class: "img-fluid"%>
+                                <%end%>
+                                </a>
+                            </div><!-- end media -->
+                            <div class="blog-meta">
+                                <h4><a href="<%=showcate_path(i.slug)%>" title=""><%=i.title%></a></h4>
+                          
+                                <p><%=i.short_description%></p>
+                                <%i.categories.each do |f|%>
+                                <small><a href="<%=showcate_path(f.slug)%>" title=""><%=f.name%></a></small>
+                                <%end%>
+                                <small><%=i.created_at%></small>
+                            </div><!-- end meta -->
+                        </div><!-- end blog-box -->
+
+                        <hr class="invis">
+                        <%end%>
+                    </div>
+                    
+                 </div>
+                
+
+                <div class="row">
+                    <div class="col-lg-10 offset-lg-1">
+                        <div class="banner-spot clearfix">
+                            <div class="banner-img">
+                                <%= image_tag ("ads-2.jpg"), class: "img-fluid"%>
+                            </div><!-- end banner-img -->
+                        </div><!-- end banner -->
+                    </div><!-- end col -->
+                </div><!-- end row -->
+            </div><!-- end container -->
+        </section>

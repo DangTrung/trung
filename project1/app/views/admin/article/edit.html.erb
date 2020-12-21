@@ -1,0 +1,35 @@
+<% provide(:title, 'Create new user') %>
+
+<%= javascript_include_tag Ckeditor.cdn_url %> 
+  
+ <div class="col-md-12 col-md-offset-3">
+  
+    <%= form_for [:admin, @article], url: {action: :update, controller: :article}, :html => {:multipart => true} do |f|%>
+        <h5>Choose Category</h5>
+        <%= f.select(:category_ids, options_for_select(@category.map{ |c| [c.name, c.id, :class => 'rounded-circle']}, :selected => @selected), {}, {:multiple => true, class: "multiple form-control"})%>
+      <br>
+      <h5>New Post</h5>
+      <%= f.label :title %>
+      <%= f.text_field :title, class: 'form-control', id: 'myInput', :oninput => "myFunction();" %>
+      <%= f.label :slug%>
+      <%= f.text_field :slug, class: 'form-control', id: 'demo'%>
+      <%= f.label :short_description %>
+      <%= f.text_field :short_description, class: 'form-control' %>
+      <%= f.label :image_url%>
+      <%= f.file_field :image_url,  accept: "image/jpeg, image/gif, image/png, image/jpg", class: 'form-control-file'%>
+      <%= f.label :content%>
+      <%= f.cktext_area :content, class: 'form-control', as: :ckeditor, input_html: { ckeditor: { toolbar: 'Full' } }%>
+      <script>
+        function myFunction() {
+          var x = document.getElementById("myInput").value;
+          document.getElementById("demo").value = x.replace(/ /g,'-');
+        }
+      </script>
+
+      
+
+      <%= f.submit "Save changes", class: "btn btn-primary" %>
+    <% end %>
+
+</div>
+ 

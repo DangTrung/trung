@@ -1,0 +1,20 @@
+<% provide(:title, "Profile") %>
+<div class="container d-flex justify-content-center">
+<div class="row shadow-lg rounded p-5">
+ <div class="col-md-12 col-md-offset-3"> 
+    <h4 class="text-center"> Your profile</h4>
+    <div class="d-flex  ">
+      <%if @current_user.avatar.url%>
+        <%=image_tag @current_user.avatar.url, class: "img-profile rounded-circle", height: '70', width: '70'  %>
+      <%end%>
+      <div class="text-center p-3">
+      <h6> User Name: <%=@current_user.name%></h6>
+      <h6><h6>
+      <h6> Your email:<%=@current_user.email%> </h6>
+      <h6><h6>
+      <%= link_to "edit",admin_dashboard_edituser_path(@current_user.id), method: :get, class: "btn btn-md btn-warning mx-2 rounded" %>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

@@ -1,0 +1,25 @@
+<% provide(:title, "Create User") %>
+<div class="container d-flex justify-content-center">
+<div class="row shadow-lg rounded  p-5">
+ <div class="col-md-12 col-md-offset-3">
+    <h2 class="text-center">Create New Role</h2>
+    <%= form_for [:admin, @role], url: {action: :update, controller: :role}, :html =>{ :class => "align-items-center" } do |f| %>
+      <%= render 'shared/error_role'%>
+      <%=f.label :role_name%>
+      <br>
+      <%= f.text_field :role_name, class: "form-control"%>
+      <br>
+      <%@name.each do |i|%>
+      <h6 class="mt-2"><%= i%></h6>
+      <%@per = Permission.where(subject_class: i)%>
+      <%= fields_for i do |ff|%>
+       <%= ff.select(:permission_ids, options_for_select(@per.map{ |c| [c.action, c.id, :class => 'rounded-circle']}, :selected => @role.permissions.where(subject_class: i).pluck(:id) ), {}, {:multiple => true, class: "multiple form-control"})%>
+      <%end%>
+      <%end%>
+      <br>
+    
+     <%= f.submit "Save changes", class: "btn btn-primary mt-2" %>
+    <% end %>
+  </div>
+</div>
+</div>
