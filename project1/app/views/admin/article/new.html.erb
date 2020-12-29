@@ -12,16 +12,16 @@
       <br>
       <h5>New Post</h5>
       <%= f.label :title %>
-      <%= f.text_field :title, class: 'form-control', id: 'myInput', :oninput => "myFunction();" %>
+      <%= f.text_field :title, required: true,  class: 'form-control', id: 'myInput', :oninput => "myFunction();" %>
       <%= f.label :slug%>
-      <%= f.text_field :slug, class: 'form-control', id: 'demo'%>
+      <%= f.text_field :slug, required: true, class: 'form-control', id: 'demo'%>
       <%= f.label :short_description %>
-      <%= f.text_field :short_description, class: 'form-control' %>
+      <%= f.text_field :short_description, required: true, class: 'form-control' %>
       <%= f.label :image_url%>
       <%= f.file_field :image_url,  accept: "image/jpeg, image/gif, image/png, image/jpg", class: 'form-control-file'%>
       <br>
       <%= f.label :content%>
-      <%= f.cktext_area :content, class: 'form-control', as: :ckeditor, input_html: { ckeditor: { toolbar: 'Full' } }%>
+      <%= f.cktext_area :content, required: true, class: 'form-control', as: :ckeditor, input_html: { ckeditor: { toolbar: 'Full' } }%>
       <script>
         function myFunction() {
           var x = document.getElementById("myInput").value;

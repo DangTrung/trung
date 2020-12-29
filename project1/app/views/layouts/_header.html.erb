@@ -65,17 +65,18 @@
                             <li class="nav-item">
                                 <%= link_to "HOME", root_path, class: "nav-link color-pink-hover"%>
                             </li>
+                            <% if @cate%>
                             <% @cate.each do |i|%>
                             <li class="nav-item dropdown has-submenu">
-                                <a class="nav-link dropdown-toggle" href="<%=showcate_path(i.slug)%>" id="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><%=i.name%></a>
-                                <ul class="dropdown-menu" aria-labelledby="<%i.id%>">    
-                                    <%i.children.each do |f|%>
-                                    <li><a class="dropdown-item" href="<%=showcate_path(f.slug)%>"><%=f.name%><span class="hidden-md-down hidden-sm-down hidden-xs-down"><i class="fa fa-angle-right"></i></span></a>
+                                <a class="nav-link dropdown-toggle" href="<%=showcate_path(i.slug)%>" id="dropdown02" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><%=i.name%></a>
+                                <ul class="dropdown-menu" aria-labelledby="dropdown02">
+                                <% i.children.each do |f|%>
+                                    <li><a class="dropdown-item" href="<%=showcate_path(f.slug)%>"><%= f.name%><span class="hidden-md-down hidden-sm-down hidden-xs-down"><i class="fa fa-angle-right"></i></span></a>
                                     </li>
-                                    <%end%>
-                    
+                                <%end%>
                                 </ul>
                             </li>
+                            <%end%>
                             <%end%>
                         </ul>
                     </div>

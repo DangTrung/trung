@@ -1,11 +1,17 @@
 Rails.application.routes.draw do
  mount Ckeditor::Engine => '/ckeditor'
- unless Rails.env.test?
- match '/404', to: "catch_errors#file_not_found", via: :all
- match '/500', to: "catch_errors#internal_server_error", via: :all
- match '/422', to: "catch_errors#unprocessable", via: :all
- end
-  root :to => "hompage#index"
+  # namespace :admin do
+  #   %w(404 422 500).each do |code|
+  #     get code, to: "admin/errors#show", code: code, admin: true, via: :all
+  #   end
+  # end
+
+#  %w(404 422 500).each do |code|
+#     match code, :to => "errors#show", code: code, admin: true,via: :all
+#  end
+
+
+ root :to => "hompage#index"
   get 'sessions/new'
   namespace :admin do
     get 'dashboard/index'
@@ -61,4 +67,5 @@ Rails.application.routes.draw do
   get '/category/:slug', to: "hompage#showcate", as: "showcate"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
  
+  get "*path", :to => "errors#show"
 end

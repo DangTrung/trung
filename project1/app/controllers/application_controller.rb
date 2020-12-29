@@ -1,5 +1,8 @@
 class ApplicationController < ActionController::Base
-  
+  rescue_from CanCan::AccessDenied do
+    render "errors/forbidden", status: 403
+  end
+
   protected
  
     #derive the model name from the controller. egs UsersController will return User

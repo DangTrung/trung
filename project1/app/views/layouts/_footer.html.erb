@@ -90,12 +90,15 @@
                             <h2 class="widget-title">Popular Categories</h2>
                             <div class="link-widget">
                                 <ul>
+                                <%if @allcate%>
                                       <%@allcate.each do |cate|%>
                                         <li>
                                         <a href="<%=showcate_path(cate.slug)%>"><%= cate.name%> <span><%=cate.articles.where(status: :public).count%></span></a>
                                          </li>
                                       <%end%>
+                                      <%end%>
                                     </ul>
+
                             </div><!-- end link-widget -->
                         </div><!-- end widget -->
                     </div><!-- end col -->

@@ -1,6 +1,6 @@
 class Admin::RoleController < Admin::BaseController   
     before_action :logged_in?
-    load_and_authorize_resource
+    load_and_authorize_resource :except => [:index]
     before_action :load_permissions
     def index
         @role = Role.all

@@ -1613,11 +1613,10 @@ hr.invis3 {
 .btn {
     background-color: #111111;
     border: 0 none;
-    border-radius: 0;
     font-size: 14px;
     font-weight: bold;
     padding: 0.8rem 2rem;
-    text-transform: none;
+    text-transform: none;   
 }
 
 .link-widget li {

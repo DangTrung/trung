@@ -17,6 +17,7 @@
       <%= f.text_field :short_description, class: 'form-control' %>
       <%= f.label :image_url%>
       <%= f.file_field :image_url,  accept: "image/jpeg, image/gif, image/png, image/jpg", class: 'form-control-file'%>
+      <br>
       <%= f.label :content%>
       <%= f.cktext_area :content, class: 'form-control', as: :ckeditor, input_html: { ckeditor: { toolbar: 'Full' } }%>
       <script>

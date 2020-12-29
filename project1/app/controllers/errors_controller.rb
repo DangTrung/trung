@@ -1,9 +1,11 @@
 class ErrorsController < ApplicationController
-  def not_found
-    render status: 400
+  layout :layout
+  def show
   end
-
-  def internal_server_error
-    render status: 500
+  def current_user
+    User.find_by(id: session[:user_id])
+  end
+  def layout
+    'admin/admin' if params[:path].split("/")[0] == "admin"
   end
 end

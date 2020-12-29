@@ -8,6 +8,4 @@ module ApplicationHelper
         a.delete(i.status)
         a
     end
-  
-
 end

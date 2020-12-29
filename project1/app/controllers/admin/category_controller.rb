@@ -42,6 +42,7 @@ class Admin::CategoryController < Admin::BaseController
             @cate = Category.all.includes(:parent)
             redirect_to :controller => 'category', :action => 'index'  
     end
+    
     private
     def category_params
         params.require(:category).permit(:name, :parent_id, :slug)

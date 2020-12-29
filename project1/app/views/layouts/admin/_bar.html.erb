@@ -5,7 +5,7 @@
         <div class="sidebar-brand-icon rotate-n-15">
           <i class="fas fa-laugh-wink"></i>
         </div>
-        <div class="sidebar-brand-text mx-3"><%=@current_user.role.role_name%><sup>2</sup></div>
+        <div class="sidebar-brand-text mx-3"><%=current_user.role.role_name%><sup>2</sup></div>
       </a>
 
       <!-- Divider -->
@@ -73,10 +73,10 @@
           <div class="bg-white py-2 collapse-inner rounded">
             
             <h6 class="collapse-header">User</h6>
-            <%if can? :showalluser, User%>
+            <%if can? :index, User%>
             <a class="collapse-item" href="<%= admin_user_index_path%>">All user</a>
             <%end%>
-            <%if can? :newuser, User%>
+            <%if can? :create, User%>
             <a class="collapse-item" href="<%= admin_user_new_path%>">Create New User</a>
             <%end%>
           </div>

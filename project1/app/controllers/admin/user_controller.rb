@@ -18,7 +18,7 @@ class Admin::UserController < Admin::BaseController
           flash[:success] = 'Sucessfull creating new user'
           redirect_to :controller => 'dashboard', :action => 'index'
         else
-          render 'newuser'
+          render 'new'
         end
        
     end

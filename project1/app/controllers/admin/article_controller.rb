@@ -55,7 +55,7 @@ class Admin::ArticleController < Admin::BaseController
      #  debugger
     end
     def update
-        @all = Category.all
+        @category = Category.all
         @article = Article.find_by(id: params[:id])
         if @article.update(attributes: article_params, category_ids: params['article']['category_ids'])
             flash[:success] = "Article Updated"

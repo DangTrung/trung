@@ -22,7 +22,7 @@
                <div class="d-flex justify-content-around">
                 <%@name = i.permissions.pluck(:subject_class).uniq %>
                 <%@name.each do |f|%>
-                <div class="border ">
+                <div class="border rounded">
                  <p class="border font-weight-bold"> <%=f%></p>
                  <%i.permissions.where(subject_class: f).each do |n|%> 
                  <p><%= n.action%></p>
